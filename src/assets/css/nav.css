@@ -1,0 +1,17 @@
+﻿.nav{
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    padding: 1em 0;
+}
+
+.logoTxt{
+    font-size: 1.2em;
+    display: block;
+    font-weight: 600;
+    color: #1DBF73;
+}
+
+.link:hover{
+    text-decoration: none;
+    color: #1DBF73;
+}

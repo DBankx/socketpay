@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/contentModel.xml
+/projectSettingsUpdater.xml
+/.idea.socket-pay.iml
+/modules.xml
+# Datasource local storage ignored files
+/../../../../../../../../../:\Users\Asus\Desktop\htmlProjects\socket-pay\.idea\.idea.socket-pay.dir\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/

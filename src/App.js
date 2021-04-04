@@ -1,24 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {ChakraProvider, Box, extendTheme, Container} from "@chakra-ui/react";
+import {Switch, Route} from "react-router-dom";
+import Navbar from "./components/layout/Navbar";
+import "./assets/css/app.css";
+import {customTheme} from "./assets/chakra-ui-theme";
+import ProductsPage from "./components/products/ProductPage";
+import ProductPage from "./components/product/ProductPage";
+import SavedItemsPage from "./components/saved/SavedItemsPage";
+import PaymentSuccessPage from "./components/PaymentSuccessPage";
+import HomePage from "./components/layout/HomePage";
+import Footer from "./components/layout/Footer";
+import NotFound from "./components/NotFound";
+
+const theme = extendTheme(customTheme);
 
 function App() {
+   const savedItems = JSON.parse(localStorage.getItem("skp_ci"));
+   if(!savedItems){
+       localStorage.setItem("skp_ci", JSON.stringify([]));
+   }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <ChakraProvider theme={theme}>
+          <Box className="content">
+              <Navbar />
+          <Box>
+              <Container mt="2em" maxW="container.xl">
+        <Switch>
+                <Route exact path="/" component={HomePage} />
+                <Route exact path="/products" component={ProductsPage} />
+                <Route exact path="/product/:id" component={ProductPage} />
+                <Route exact path="/saved" component={SavedItemsPage} />
+                <Route exact path="/payment-success/:reference/:email" component={PaymentSuccessPage} />
+                <Route component={NotFound} />
+        </Switch>
+          </Container>
+          </Box>
+          </Box>
+          <Box className="footer" mt="2em">
+              <Container maxW="container.xl">
+              <Footer />
+              </Container>
+          </Box>
+      </ChakraProvider>
   );
 }
 

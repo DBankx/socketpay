@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {createBrowserHistory} from  "history";
+import {Router, Route} from "react-router-dom";
+import { QueryParamProvider } from 'use-query-params';
+
+export const history = createBrowserHistory();
 
 ReactDOM.render(
   <React.StrictMode>
+      <Router history={history}>
+          <QueryParamProvider ReactRouterRoute={Route}>
     <App />
+          </QueryParamProvider>
+      </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
